@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Showcase</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        body {
+            animation: waterBlend 5s infinite alternate;
+            color: #052659;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: transparent;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes waterBlend {
+            0% { background: radial-gradient(circle, rgba(127, 255, 212, 0.8), rgba(255, 182, 193, 0.8)); }
+            50% { background: radial-gradient(circle, rgba(135, 206, 250, 0.8), rgba(255, 192, 203, 0.8)); }
+            100% { background: radial-gradient(circle, rgba(175, 238, 238, 0.8), rgba(255, 160, 122, 0.8)); }
+        }
+
+        .container-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .content-box:hover {
+            transform: scale(1.02);
+        }
+
+        .book-img {
+            border-radius: 10px;
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .book-img:hover {
+            transform: scale(1.05);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        details:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .purchase-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .purchase-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .purchase-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .amazon {
+            background: linear-gradient(135deg, #FFCC80, #FFA726);
+            color: #333;
+        }
+
+        .flipkart {
+            background: linear-gradient(135deg, #90CAF9, #64B5F6);
+            color: #333;
+        }
+
+        footer {
+            background: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="py-3 text-white bg-dark w-100">
+    <h1>Welcome to Book Showcase</h1>
+</header>
+
+<main class="container-box mt-4">
+    <div class="content-box">
+        <h2>Exploring Technology</h2>
+        <img src="public/images/book3.jpg" alt="Book Cover" class="book-img">
+        
+        <br><br>
+        
+        <details class="accordion">
+            <summary>Genre</summary>
+            <ul>
+                <li>Mindfulness, Self-Help, </li>
+                <li>Personal Development</li>
+            </ul>
+        </details>
+        
+        <details class="accordion">
+            <summary>Index Page</summary>
+            <ul>
+                <li>Introduction</li>
+                <li>Chapter 1: Overview</li>
+                <li>Chapter 2: Advanced Concepts</li>
+            </ul>
+        </details>
+        
+        <details class="accordion">
+            <summary>Authors</summary>
+            <p>Keith Macpherson</p>
+        </details>
+        
+        <details class="accordion">
+            <summary>Overview</summary>
+            <p> The book provides five key principles to integrate mindfulness into daily life, helping individuals develop self-awareness, focus, and inner peace.</p>
+        </details>
+        
+        <h3>Purchase Links</h3>
+        <div class="purchase-links">
+            <a href="https://www.amazon.com" target="_blank" class="amazon">
+                <i class="bi bi-cart"></i> Buy on Amazon
+            </a>
+            <a href="https://www.flipkart.com" target="_blank" class="flipkart">
+                <i class="bi bi-bag"></i> Buy on Flipkart
+            </a>
+        </div>
+    </div>
+    
+    <h3 class="mt-4">Feedback Form</h3>
+    <form class="content-box">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control mb-3" required>
+        
+        <label for="feedback">Feedback</label>
+        <textarea id="feedback" class="form-control mb-3" rows="3" required></textarea>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+<a href="index.html" class="btn btn-secondary back-btn">Back to Main Page</a>
+
+<footer>
+    <p>&copy; 2025 Book Showcase | All rights reserved</p>
+</footer>
+
+<script>
+    document.querySelectorAll('.accordion').forEach((details) => {
+        details.addEventListener('toggle', function() {
+            if (this.open) {
+                document.querySelectorAll('.accordion').forEach((other) => {
+                    if (other !== this) {
+                        other.removeAttribute('open');
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

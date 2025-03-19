@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover and explore books in the Book Showcase.">
+    <meta name="keywords" content="books, showcase, reading, book collection">
+    <meta name="author" content="Book Showcase">
+    <title>Book Showcase</title>
+    
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        
+    <style>
+      
+        body {
+            animation: backgroundChange 10s infinite alternate;
+            color: rgb(236, 242, 236);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        @keyframes backgroundChange {
+            0% { background: linear-gradient(to right, #11d3e0, #f58a8a); }
+            50% { background: linear-gradient(to right, #b8aff8, #bdff9e); }
+            100% { background: linear-gradient(to right, #fd7c8b, #c5f2f8); }
+        }
+
+       
+        header {
+            background: #333;
+            padding: 15px 0;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+     
+        .book-container {
+            perspective: 1000px;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .book {
+            width: 200px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .book:hover, .book.flip {
+            transform: rotateY(180deg);
+        }
+
+     
+        .book .front, .book .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        
+        .book .front {
+            background-size: cover;
+            background-position: center;
+        }
+
+     
+        .book .back {
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transform: rotateY(180deg);
+            padding: 10px;
+        }
+
+       
+        .back h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .back p {
+            font-size: 14px;
+        }
+
+       
+        .details-btn {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            background: #fc4a1a;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+      
+        footer {
+            background: #333;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <header class="text-center text-white py-3">
+        <h1>Welcome to Book Showcase</h1>
+    </header>
+
+  
+    <section class="container text-center my-5">
+        <h2>Explore Books</h2>
+        <div class="row mt-4">
+            
+          
+            <div class="col-md-4">
+                <div class="book-container">
+                    <div class="book" onclick="flipBook(this)">
+                        <div class="front" style="background-image: url('public/images/book4.png');"></div>
+                        <div class="back">
+                            <h3>Manufacturing Engineering</h3>
+                            <p>By Serope Kalpakjian & Steven Schmid</p>
+                            <a href="projectcard.html" style="background-color: rgb(82, 235, 243); color: #333; font-weight: bold; " class="btn btn-secondary back-btn">View Details</a>
+
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-4">
+                <div class="book-container">
+                    <div class="book" onclick="flipBook(this)">
+                        <div class="front" style="background-image: url('public/images/book2.jpg');"></div>
+                        <div class="back">
+                            <h3>50 Revolutionary Inventions</h3>
+                            <p>Tim Harford</p>
+                            <a href="projectcard2.html" style="background-color: rgb(82, 235, 243); color: #333; font-weight: bold; " class="btn btn-secondary back-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="col-md-4">
+                <div class="book-container">
+                    <div class="book" onclick="flipBook(this)">
+                        <div class="front" style="background-image: url('public/images/book3.jpg');"></div>
+                        <div class="back">
+                            <h3>Making Sense Of Mindfulness</h3>
+                            <p>Keith Macpherson</p>
+                            <a href="projectcard1.html"  style="background-color: rgb(82, 235, 243); color: #333; font-weight: bold; "class="btn btn-secondary back-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer class="text-center py-3">
+        <p>© 2025 Book Showcase | All rights reserved</p>
+    </footer>
+
+    
+    <script>
+        function flipBook(book) {
+            book.classList.toggle("flip");
+        }
+
+        function showDetails(bookID) {
+            window.location.href = bookID + "-details.html";
+        }
+    </script>
+
+</body>
+</html>
